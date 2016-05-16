@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mum.cs545.lms.dao;
-
-import edu.mum.cs545.lms.domain.User;
-import java.util.List;
+package edu.mum.cs545.lms.domain;
 
 /**
  *
- * @author 985069
+ * @author gmlan
  */
-public interface UsersDataAccess {
-    List<User> getAll();
+public enum StaffType { 
+	Administrator,
+        Librarian
 }

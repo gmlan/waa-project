@@ -12,9 +12,27 @@ import java.io.Serializable;
  * @author 985069
  */
 public class User implements Serializable{
+    private String userId;
     String firstName;
     String lastName;
     String email;
+    private String address;
+    private String phone;
+    
+    
+    /**
+     * @return the userId
+     */
+    public String getUserId() {
+        return userId;
+    }
+
+    /**
+     * @param userId the userId to set
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     
     public String getFirstName(){
         return firstName;
@@ -38,17 +56,34 @@ public class User implements Serializable{
     
     public void setEmail(String email){
         this.email = email;
-    }
-    
+    }     
 
-    public User(String fName, String lName, String mail){
-        this.firstName = fName;
-        this.lastName = lName;
-        this.email = mail;
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
     }
-    
-    @Override
-    public String toString(){
-        return "["+ this.firstName + "," + this.lastName + "," + this.email + "]";
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
     }
+
+    /**
+     * @return the phone
+     */
+    public String getPhone() {
+        return phone;
+    }
+
+    /**
+     * @param phone the phone to set
+     */
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 }

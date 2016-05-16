@@ -1,11 +1,12 @@
 package edu.mum.cs545.lms.service.impl;
 
 
-import edu.mum.cs545.lms.dao.UsersDataAccess;
 import edu.mum.cs545.lms.domain.User;
 import edu.mum.cs545.lms.service.UserService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import edu.mum.cs545.lms.dao.UserDataAccess;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,10 +22,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UsersDataAccess dao;
+    @Autowired
+    private UserDataAccess dao;
     
     public List<User> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dao.getAll();                
+    }
+    
+    public void addUser(User user){
+        dao.addUser(user);
     }
     
 }
