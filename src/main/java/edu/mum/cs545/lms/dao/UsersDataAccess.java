@@ -7,11 +7,12 @@ package edu.mum.cs545.lms.dao;
 
 import edu.mum.cs545.lms.domain.User;
 import java.util.List;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author 985069
  */
-public interface UsersDataAccess {
-    List<User> getAll();
+public interface UsersDataAccess{
+    //List<User> getAll();
 }

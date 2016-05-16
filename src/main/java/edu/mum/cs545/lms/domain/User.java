@@ -6,15 +6,27 @@
 package edu.mum.cs545.lms.domain;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author 985069
  */
+@Entity
 public class User implements Serializable{
-    String firstName;
-    String lastName;
-    String email;
+    
+    private String firstName;
+    private String lastName;
+    private String email;
+    
+    @Id
+    private String userName;
+    private String password;
+    private ROLE role;
+
+    public User() {
+    }
     
     public String getFirstName(){
         return firstName;
@@ -24,7 +36,13 @@ public class User implements Serializable{
         this.firstName = firstName;
     }
     
-     public String getLastName(){
+    public User(String fName, String lName, String mail){
+        this.firstName = fName;
+        this.lastName = lName;
+        this.email = mail;
+    }
+    
+    public String getLastName(){
         return lastName;
     }
     
@@ -39,14 +57,31 @@ public class User implements Serializable{
     public void setEmail(String email){
         this.email = email;
     }
-    
 
-    public User(String fName, String lName, String mail){
-        this.firstName = fName;
-        this.lastName = lName;
-        this.email = mail;
+    public String getUserName() {
+        return userName;
     }
-    
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public ROLE getRole() {
+        return role;
+    }
+
+    public void setRole(ROLE role) {
+        this.role = role;
+    }
+     
     @Override
     public String toString(){
         return "["+ this.firstName + "," + this.lastName + "," + this.email + "]";
