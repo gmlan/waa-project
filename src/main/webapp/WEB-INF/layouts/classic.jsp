@@ -13,6 +13,17 @@
     <!-- Custom Fonts -->
     <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Data Tables -->
+    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
+    
+    <!-- jQuery -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+ 
+    <!-- Data Tables -->
+    <script src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script> 
 <title><tiles:getAsString name="title" /></title>
 </head>
  
@@ -32,13 +43,5 @@
             
     </div> 
         
-        
-            
-    <!-- jQuery -->
-    <script src="static/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="static/js/bootstrap.min.js"></script>
- 
 </body>
 </html>
