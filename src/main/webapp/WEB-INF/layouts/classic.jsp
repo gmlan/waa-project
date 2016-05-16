@@ -1,14 +1,17 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <html>
 <head>
-     <!-- Bootstrap Core CSS -->
-     <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Specify default URL and default target for all links on a page -->
+    <base href="${pageContext.request.contextPath}/" />
+     
+    <!-- Bootstrap Core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="${pageContext.request.contextPath}/static/css/sb-admin.css" rel="stylesheet">
+    <link href="static/css/sb-admin.css" rel="stylesheet">
  
     <!-- Custom Fonts -->
-    <link href="${pageContext.request.contextPath}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 <title><tiles:getAsString name="title" /></title>
 </head>
@@ -32,10 +35,10 @@
         
             
     <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
+    <script src="static/js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
  
 </body>
 </html>

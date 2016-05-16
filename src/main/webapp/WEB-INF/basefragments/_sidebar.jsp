@@ -2,36 +2,39 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li class="active">
-            <a href="${pageContext.request.contextPath}/home"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            <a href="home"><i class="fa fa-fw fa-home"></i> Dashboard</a>
+        </li> 
+        <li>
+            <a href="home/search"><i class="fa fa-fw fa-search"></i>Search</a>
+        </li>
+        
+        <li>
+            <a href="checkout"><i class="fa fa-fw fa-check"></i>Checkout</a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/home/contactus"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-        </li>
-        <li>
-            <a href="home"><i class="fa fa-fw fa-table"></i> Tables</a>
-        </li>
-        <li>
-            <a href="home"><i class="fa fa-fw fa-edit"></i> Forms</a>
-        </li>
-        <li>
-            <a href="contactus"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-        </li>
-        <li>
-            <a href="home"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-        </li>
-        <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Administration <i class="fa fa-fw fa-caret-down"></i></a>
-            <ul id="demo" class="collapse">
+            <a href="javascript:;" data-toggle="collapse" data-target="#bookItem"><i class="fa fa-fw fa-book"></i> Books <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="bookItem" class="collapse">
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/add">Add User</a>
+                    <a href="book/add">Add Book</a>
                 </li>
                 <li>
-                    <a href="${pageContext.request.contextPath}/admin/list">List User</a>
+                    <a href="book/list">List Book</a>
                 </li>
             </ul>
         </li>
         <li>
-            <a href="home"><i class="fa fa-fw fa-dashboard"></i>Help</a>
+            <a href="javascript:;" data-toggle="collapse" data-target="#userItem"><i class="fa fa-fw fa-user"></i> Administration <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="userItem" class="collapse">
+                <li>
+                    <a href="admin/add">Add User</a>
+                </li>
+                <li>
+                    <a href="admin/list">List User</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="admin/add"><i class="fa fa-fw fa-question"></i>Help</a>
         </li>
     </ul>
 </div>
