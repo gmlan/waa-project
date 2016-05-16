@@ -9,17 +9,21 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author Mikiyas
  */
+@Entity
 public class Book {
     
     //@JsonIgnore
-    //@Id
-    //@GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
 
     //@NotBlank(message = "ISBN can not be blank")
