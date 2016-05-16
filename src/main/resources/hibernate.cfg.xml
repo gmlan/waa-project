@@ -19,6 +19,6 @@
     <property name="show_sql">true</property>
     <!-- Drop and re-create the database schema on startup -->
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping resource="User.hbm.xml"/>
+    <mapping class="edu.mum.cs545.lms.domain.User" />
   </session-factory>
 </hibernate-configuration>

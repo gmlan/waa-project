@@ -6,20 +6,38 @@
 package edu.mum.cs545.lms.domain;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  *
  * @author 985069
  */
+
+@Entity
+@Table(name="t_user")
 public class User implements Serializable{
+    @Id    
+    @GeneratedValue(generator="idGenerator")
+    @GenericGenerator(name="idGenerator", strategy="uuid")
+    @Column(name="userId")
     private String userId;
+    
+    @Column(name="firstName")
     String firstName;
+    
+    @Column(name="lastName")
     String lastName;
+    
+    @Column(name="email")
     String email;
+    
+    @Column(name="address")
     private String address;
+    
+    @Column(name="phone")
     private String phone;
-    
-    
+        
     /**
      * @return the userId
      */

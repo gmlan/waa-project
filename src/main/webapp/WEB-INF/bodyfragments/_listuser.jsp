@@ -8,6 +8,8 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                     </tr>
             </thead>
     </table>
@@ -33,9 +35,11 @@
                                       "aaData": data,
                                       "pageLength": 5,
                                       "aoColumns": [
-                                              { "mDataProp": "firstName"	},
+                                              { "mDataProp": "firstName"},
                                               { "mDataProp": "lastName" },
-                                              { "mDataProp": "email" }		
+                                              { "mDataProp": "email" },
+                                              { "mDataProp": "phone" },
+                                              { "mDataProp": "address" }
                                       ]
                               } );
                  }
