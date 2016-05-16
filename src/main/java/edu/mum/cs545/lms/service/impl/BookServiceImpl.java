@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mum.cs545.lms.service;
+package edu.mum.cs545.lms.service.impl;
 
 import edu.mum.cs545.lms.dao.BookDataAccess;
 import edu.mum.cs545.lms.domain.Book;
+import edu.mum.cs545.lms.domain.BookCategory;
+import edu.mum.cs545.lms.service.BookService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -39,6 +41,14 @@ public class BookServiceImpl implements BookService{
 
     public List<Book> findByTitle(String title) {
         return bookDao.findByTitle(title);
+    }
+
+    public List<Book> findByIsbn(String isbn) {
+        return bookDao.findByIsbn(isbn);
+    }
+
+    public List<Book> findByCategory(BookCategory category) {
+        return bookDao.findByCategory(category);
     }
     
 }

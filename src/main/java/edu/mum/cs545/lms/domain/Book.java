@@ -10,8 +10,13 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -59,11 +64,11 @@ public class Book {
     private transient MultipartFile cover;
 
     //@JsonIgnore
-    //@Lob
+    @Lob
     //@Column(name = "cover")
     private byte[] bookCover;
 
-    //@Lob
+    @Lob
     //@NotBlank(message = "Description can not be blank")
     private String description;
 
@@ -79,8 +84,8 @@ public class Book {
     private BookCategory bookCategory;
 
     //@IndexedEmbedded
-    //@ManyToMany(fetch = FetchType.EAGER)
-    //@JoinTable(name = "BookAuthor", joinColumns = @JoinColumn(name = "bookId"), inverseJoinColumns = @JoinColumn(name = "authorId"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "BookAuthor", joinColumns = @JoinColumn(name = "bookId"), inverseJoinColumns = @JoinColumn(name = "authorId"))
     private List<Author> authors = new ArrayList<Author>();
     
     //??? [check if we need this]

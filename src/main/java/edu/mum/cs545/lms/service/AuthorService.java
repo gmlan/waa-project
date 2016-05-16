@@ -3,21 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mum.cs545.lms.dao;
+package edu.mum.cs545.lms.service;
 
 import edu.mum.cs545.lms.domain.Author;
-import java.io.Serializable;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Biwota
  */
-public interface AuthorDataAccess extends JpaRepository<Author, Long>{
+public interface AuthorService {
+    
+    public void create(Author author);
+    public void update(Author author, Long id);
+    public void delete(Long id);
     List<Author> findByFirstName(String fname);
     List<Author> findByLastName(String lname);
     List<Author> findById(long id);
     
-        
 }

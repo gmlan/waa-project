@@ -7,15 +7,21 @@ package edu.mum.cs545.lms.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Mikiyas
  */
+@Entity
 public class Publisher {
     
     //@JsonIgnore
-    //@Id @GeneratedValue
+    @Id @GeneratedValue
     private long id;
 
 
@@ -32,7 +38,7 @@ public class Publisher {
     private  String phone;
 
     //@JsonIgnore
-    //@OneToMany(mappedBy="publisher", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy="publisher", cascade=CascadeType.ALL)
     private List<Book> books = new ArrayList<Book>();
 
     public long getId() {

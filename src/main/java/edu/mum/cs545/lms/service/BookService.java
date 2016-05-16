@@ -6,6 +6,7 @@
 package edu.mum.cs545.lms.service;
 
 import edu.mum.cs545.lms.domain.Book;
+import edu.mum.cs545.lms.domain.BookCategory;
 import java.util.List;
 
 /**
@@ -17,6 +18,8 @@ public interface BookService {
     void update(long id,Book book);
     void delete(long id);
     List<Book> findByTitle(String title);
+    List<Book> findByIsbn(String isbn);
+    List<Book> findByCategory(BookCategory category);
     
     
 }

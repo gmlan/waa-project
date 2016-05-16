@@ -7,9 +7,12 @@ package edu.mum.cs545.lms.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 
 
 /**
@@ -40,7 +43,7 @@ public class Author {
     private String phone;
 
     //@JsonIgnore
-    //@ManyToMany(mappedBy="authors", cascade=CascadeType.ALL)
+    @ManyToMany(mappedBy="authors", cascade=CascadeType.ALL)
     private List<Book> books = new ArrayList<Book>();
 
 
