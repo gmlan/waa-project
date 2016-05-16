@@ -7,15 +7,20 @@ package edu.mum.cs545.lms.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 
 /**
  *
  * @author Mikiyas
  */
+@Entity
 public class Author {
     
     //@JsonIgnore
-    //@Id @GeneratedValue
+    @Id @GeneratedValue
     private long id;
 
 
