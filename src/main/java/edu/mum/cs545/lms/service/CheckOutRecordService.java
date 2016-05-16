@@ -3,20 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mum.cs545.lms.dao;
+package edu.mum.cs545.lms.service;
 
 import edu.mum.cs545.lms.domain.CheckOutRecord;
-import java.io.Serializable;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Mike
  */
-//@Component
-public interface CheckOutRecordDataAccess {
+public interface CheckOutRecordService {
     List<CheckOutRecord> getAll();
     CheckOutRecord findById(Long id);
     void deleteCheckOutRecord(Long id);
