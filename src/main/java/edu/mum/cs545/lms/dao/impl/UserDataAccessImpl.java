@@ -9,6 +9,7 @@ import edu.mum.cs545.lms.domain.User;
 import java.util.List;
 import edu.mum.cs545.lms.dao.UserDataAccess;
 import edu.mum.cs545.lms.util.SessionHelper;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -35,13 +36,25 @@ public class UserDataAccessImpl implements UserDataAccess {
             tx.commit();
             session.close();
         }
-    }
+    } 
     
-    public void addUser(User user){
+    public void addUser(User user){         
         Session session = SessionHelper.getSession();
         Transaction trans = session.beginTransaction();
         session.save(user);
         trans.commit();
         session.close();        
     }
+
+    public User getUserByName(String name) {
+        Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from User where userName=?");
+        q.setString(0,name);
+        List result = q.list();
+        if(result.size() > 0) 
+            return (User)result.get(0);
+        else 
+            return null;
+    }
+ 
 }
