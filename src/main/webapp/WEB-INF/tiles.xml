@@ -18,7 +18,17 @@
    <definition name="homePage" extends="base.definition">  
        <put-attribute name="title" value="Home Page" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_home.jsp" />  
+   </definition> 
+   
+    <definition name="books" extends="base.definition">  
+       <put-attribute name="title" value="Books Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_books.jsp" />  
    </definition>  
+   
+   <definition name="listbooks" extends="base.definition">  
+       <put-attribute name="title" value="List of Books Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_listbooks.jsp" />  
+   </definition>   
       
    <!-- ContactUs Page -->
    <definition name="contactusPage" extends="base.definition">  

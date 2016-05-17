@@ -10,11 +10,13 @@ import edu.mum.cs545.lms.domain.Publisher;
 import edu.mum.cs545.lms.service.PublisherService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Mikiyas
  */
+@Service
 public class PublisherServiceImpl implements PublisherService{
     
     PublisherDataAccess publisherDao;
@@ -23,28 +25,31 @@ public class PublisherServiceImpl implements PublisherService{
         this.publisherDao = publisherDao;
     } 
 
-    public void create(Publisher p) {
-        publisherDao.save(p);
+    public void addPublisher(Publisher p){
+        publisherDao.addPublisher(p);
     }
-
-    public void update(Publisher p, Long id) {
-        publisherDao.save(p);
-    }
-
-    public void delete(Long id) {
-        publisherDao.delete(id);
-    }
-
-    public List<Publisher> findByFirstName(String fname) {
-        return publisherDao.findByFirstName(fname);
-    }
-
-    public List<Publisher> findByLastName(String lname) {
-         return publisherDao.findByLastName(lname);
-    }
-
-    public List<Publisher> findById(long id) {
-         return publisherDao.findById(id);
-    }
+//    public void create(Publisher p) {
+//        publisherDao.save(p);
+//    }
+//
+//    public void update(Publisher p, Long id) {
+//        publisherDao.save(p);
+//    }
+//
+//    public void delete(Long id) {
+//        publisherDao.delete(id);
+//    }
+//
+//    public List<Publisher> findByFirstName(String fname) {
+//        return publisherDao.findByFirstName(fname);
+//    }
+//
+//    public List<Publisher> findByLastName(String lname) {
+//         return publisherDao.findByLastName(lname);
+//    }
+//
+//    public List<Publisher> findById(long id) {
+//         return publisherDao.findById(id);
+//    }
     
 }

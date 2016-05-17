@@ -10,11 +10,13 @@ import edu.mum.cs545.lms.domain.Author;
 import edu.mum.cs545.lms.service.AuthorService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Biwota
  */
+@Service
 public class AuthorServiceImpl implements AuthorService{
 
     AuthorDataAccess authorDao;
@@ -23,30 +25,34 @@ public class AuthorServiceImpl implements AuthorService{
         this.authorDao = authorDao;
     }
     
-    public void create(Author author) {
-        authorDao.save(author);
+    public void addAuthor(Author a){
+        authorDao.addAuthor(a);
     }
-
     
-
-    public void update(Author author, Long id) {
-        authorDao.save(author);
-    }
-
-    public void delete(Long id) {
-        authorDao.delete(id);
-    }
-
-    public List<Author> findByFirstName(String fname) {
-        return authorDao.findByFirstName(fname);
-    }
-
-    public List<Author> findByLastName(String lname) {
-        return authorDao.findByFirstName(lname);
-    }
-
-    public List<Author> findById(long id) {
-        return authorDao.findById(id);
-    }
+//    public void create(Author author) {
+//        authorDao.save(author);
+//    }
+//
+//    
+//
+//    public void update(Author author, Long id) {
+//        authorDao.save(author);
+//    }
+//
+//    public void delete(Long id) {
+//        authorDao.delete(id);
+//    }
+//
+//    public List<Author> findByFirstName(String fname) {
+//        return authorDao.findByFirstName(fname);
+//    }
+//
+//    public List<Author> findByLastName(String lname) {
+//        return authorDao.findByFirstName(lname);
+//    }
+//
+//    public List<Author> findById(long id) {
+//        return authorDao.findById(id);
+//    }
     
 }

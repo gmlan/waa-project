@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -92,11 +93,11 @@ public class Book {
     //private transient List<Long> authorIds = new ArrayList<>();
 
     //@IndexedEmbedded
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "publisherId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "publisherId")
     private Publisher publisher;
 
-    private transient long publisherId;
+    //private transient long publisherId;
 
     //@JsonIgnore
     //@OneToMany(mappedBy = "book")
@@ -138,13 +139,13 @@ public class Book {
 //            this.authorIds = authorIds;
 //    }
 
-    public long getPublisherId() {
-            return publisherId;
-    }
-
-    public void setPublisherId(long publisherId) {
-            this.publisherId = publisherId;
-    }
+//    public long getPublisherId() {
+//            return publisherId;
+//    }
+//
+//    public void setPublisherId(long publisherId) {
+//            this.publisherId = publisherId;
+//    }
 
     public String getIsbn() {
             return isbn;

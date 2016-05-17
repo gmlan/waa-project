@@ -14,11 +14,12 @@ import java.util.List;
  */
 public interface AuthorService {
     
-    public void create(Author author);
-    public void update(Author author, Long id);
-    public void delete(Long id);
-    List<Author> findByFirstName(String fname);
-    List<Author> findByLastName(String lname);
-    List<Author> findById(long id);
+//    public void create(Author author);
+//    public void update(Author author, Long id);
+//    public void delete(Long id);
+//    List<Author> findByFirstName(String fname);
+//    List<Author> findByLastName(String lname);
+//    List<Author> findById(long id);
+    public void addAuthor(Author a);
     
 }
