@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.mum.cs545.lms.domain;
+package edu.mum.cs545.lms.util;
 
 /**
  *
  * @author gmlan
  */
-public enum StaffType { 
-	Administrator,
-        Librarian
+public final class Constants {
+    private Constants(){}
+    
+    public static String CURRENT_USER="current_user" ;
 }

@@ -15,4 +15,5 @@ import java.util.List;
 public interface UserService {
     List<User> getAll();
     void addUser(User user);
+    boolean authentication(User user);
 }

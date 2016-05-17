@@ -7,11 +7,12 @@ package edu.mum.cs545.lms.controller;
 
 import edu.mum.cs545.lms.domain.User;
 import edu.mum.cs545.lms.service.UserService;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,23 +29,15 @@ public class AdminController {
     @Autowired
     private UserService userService;
     
-    @RequestMapping(value="/add",method=RequestMethod.GET)
-    public String add(){
-        System.out.println("edu.mum.cs545.lms.controller.AdminController.add()");       
-    
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String add(Model model) {
+        model.addAttribute("newUser", new User());
         return "adduser";
     }
     
     @RequestMapping(value="/add",method=RequestMethod.POST)
-    public String create(HttpServletRequest request){        
-        User user = new User();
-        user.setFirstName(request.getParameter("firstName"));
-        user.setLastName("cat");
-        user.setAddress("New York City");
-        user.setEmail("tom.cat@gmail.com");
-        user.setPhone("626-123-3456");
-        userService.addUser(user);
-        
+    public String create(HttpServletRequest request, @ModelAttribute("newUser") User user){
+        userService.addUser(user);        
         return "listuser";
     }
     

@@ -15,4 +15,5 @@ import java.util.List;
 public interface UserDataAccess {
     List<User> getAll();
     void addUser(User user);
+    User getUserByName(String name);
 }

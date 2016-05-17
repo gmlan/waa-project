@@ -23,6 +23,24 @@ public class User implements Serializable{
     @Column(name="userId")
     private String userId;
     
+    @Column(name="userName")  
+    private String userName;
+    
+    @Column(name="password")
+    private String password;
+    
+    @Column(name="type")
+    private UserType type;
+        
+    @Column(name="enabled")
+    private boolean enabled;
+    
+    @Transient
+    private boolean rememberme;
+    
+    @Transient
+    private boolean loggedIn;
+    
     @Column(name="firstName")
     String firstName;
     
@@ -104,4 +122,87 @@ public class User implements Serializable{
         this.phone = phone;
     }
 
+    /**
+     * @return the userName
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * @param userName the userName to set
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * @return the rememberme
+     */
+    public boolean isRememberme() {
+        return rememberme;
+    }
+
+    /**
+     * @param rememberme the rememberme to set
+     */
+    public void setRememberme(boolean rememberme) {
+        this.rememberme = rememberme;
+    }
+
+    /**
+     * @return the loggedIn
+     */
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    /**
+     * @param loggedIn the loggedIn to set
+     */
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    /**
+     * @return the type
+     */
+    public UserType getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    /**
+     * @return the enabled
+     */
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    /**
+     * @param enabled the enabled to set
+     */
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }
