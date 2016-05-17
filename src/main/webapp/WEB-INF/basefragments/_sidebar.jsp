@@ -5,7 +5,7 @@
             <a href="home"><i class="fa fa-fw fa-home"></i> Dashboard</a>
         </li> 
         <li>
-            <a href="home/search"><i class="fa fa-fw fa-search"></i>Search</a>
+            <a href="search"><i class="fa fa-fw fa-search"></i>Search</a>
         </li>
         
         <li>

@@ -16,4 +16,5 @@ public interface UserDataAccess {
     List<User> getAll();
     void addUser(User user);
     User getUserByName(String name);
+    User getUserById(String id);
 }

@@ -10,8 +10,10 @@
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Enabled</th>
                 <th>Phone</th>
                 <th>Address</th>
+                <th></th>
             </tr>
         </thead>
     </table>
@@ -41,8 +43,14 @@
                                 {"mDataProp": "firstName"},
                                 {"mDataProp": "lastName"},
                                 {"mDataProp": "email"},
+                                {"mDataProp": "enabled"},
                                 {"mDataProp": "phone"},
-                                {"mDataProp": "address"}
+                                {"mDataProp": "address"},
+                                { "mDataProp": "userId",
+                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {							
+                                                $(nTd).html("<a href='admin/edit/" + oData.userId + "'>Edit</a>");
+                                        }
+                                }	
                             ]
                         });
                     }

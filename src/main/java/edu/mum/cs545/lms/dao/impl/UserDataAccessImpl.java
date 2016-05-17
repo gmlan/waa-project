@@ -38,10 +38,11 @@ public class UserDataAccessImpl implements UserDataAccess {
         }
     } 
     
-    public void addUser(User user){         
+    public void addUser(User user){
+        
         Session session = SessionHelper.getSession();
         Transaction trans = session.beginTransaction();
-        session.save(user);
+        session.saveOrUpdate(user);
         trans.commit();
         session.close();        
     }
@@ -50,6 +51,17 @@ public class UserDataAccessImpl implements UserDataAccess {
         Session session = SessionHelper.getSession();
         Query q = session.createQuery("from User where userName=?");
         q.setString(0,name);
+        List result = q.list();
+        if(result.size() > 0) 
+            return (User)result.get(0);
+        else 
+            return null;
+    }
+
+    public User getUserById(String id) {
+         Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from User where userId=?");
+        q.setString(0,id);
         List result = q.list();
         if(result.size() > 0) 
             return (User)result.get(0);

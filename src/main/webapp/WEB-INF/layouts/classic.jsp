@@ -12,6 +12,9 @@
  
     <!-- Custom Fonts -->
     <link href="static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Main css -->
+    <link href="static/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">

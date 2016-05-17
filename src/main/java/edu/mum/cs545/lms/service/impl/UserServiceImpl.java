@@ -68,4 +68,8 @@ public class UserServiceImpl implements UserService {
         return sb.toString();
         
     }
+
+    public User getUserById(String id) {
+        return dao.getUserById(id);
+    }
 }
