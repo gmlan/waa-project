@@ -15,10 +15,22 @@
             <a href="javascript:;" data-toggle="collapse" data-target="#bookItem"><i class="fa fa-fw fa-book"></i> Books <i class="fa fa-fw fa-caret-down"></i></a>
             <ul id="bookItem" class="collapse">
                 <li>
-                    <a href="books/add">Add Book</a>
+                    <a href="books">Add Book</a>
                 </li>
                 <li>
-                    <a href="book/list">List Book</a>
+                    <a href="listbooks">List Book</a>
+                </li>
+                <li>
+                    <a href="authors">Add Author</a>
+                </li>
+                <li>
+                    <a href="listauthors">List Authors</a>
+                </li>
+                <li>
+                    <a href="publishers">Add Publisher</a>
+                </li>
+                <li>
+                    <a href="listpublishers">List Publisher</a>
                 </li>
             </ul>
         </li>

@@ -29,6 +29,27 @@
        <put-attribute name="title" value="List of Books Page" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_listbooks.jsp" />  
    </definition>   
+   
+   <definition name="authors" extends="base.definition">  
+       <put-attribute name="title" value="Authors Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_authors.jsp" />  
+   </definition>  
+   
+   <definition name="listauthors" extends="base.definition">  
+       <put-attribute name="title" value="List of Author Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_listauthors.jsp" />  
+   </definition> 
+   
+     <definition name="publishers" extends="base.definition">  
+       <put-attribute name="title" value="Publisher Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_publishers.jsp" />  
+   </definition>  
+   
+   <definition name="listpublishers" extends="base.definition">  
+       <put-attribute name="title" value="List of Publishers Page" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_listpublishers.jsp" />  
+   </definition>     
+   
       
    <!-- ContactUs Page -->
    <definition name="contactusPage" extends="base.definition">  
