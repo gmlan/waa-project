@@ -12,10 +12,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author Biwota
+ * @author Mikiyas
  */
-public interface BookDataAccess extends JpaRepository<Book,Long>{
-    List<Book> findByTitle(String title);
-    List<Book> findByIsbn(String isbn);
-    List<Book> findByCategory(BookCategory category);
+public interface BookDataAccess/* extends JpaRepository<Book,Long>*/{
+    //List<Book> findByTitle(String title);
+    //List<Book> findByIsbn(String isbn);
+    //List<Book> findByCategory(BookCategory category);
+    void addBook(Book book);
 }

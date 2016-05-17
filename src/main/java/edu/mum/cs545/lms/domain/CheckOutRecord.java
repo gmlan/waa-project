@@ -21,9 +21,9 @@ public class CheckOutRecord implements Serializable {
     private Long id;
     private String ISBN;
     private String userId;
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
     private LocalDate dueDate;
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
     private LocalDate dateCheckout;
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;

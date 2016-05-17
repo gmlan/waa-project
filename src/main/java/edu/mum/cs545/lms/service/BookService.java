@@ -14,12 +14,13 @@ import java.util.List;
  * @author Biwota
  */
 public interface BookService {
-    void create(Book book);
-    void update(long id,Book book);
-    void delete(long id);
-    List<Book> findByTitle(String title);
-    List<Book> findByIsbn(String isbn);
-    List<Book> findByCategory(BookCategory category);
+//    void create(Book book);
+//    void update(long id,Book book);
+//    void delete(long id);
+//    List<Book> findByTitle(String title);
+//    List<Book> findByIsbn(String isbn);
+//    List<Book> findByCategory(BookCategory category);
+    public void addBook(Book b);
     
     
 }

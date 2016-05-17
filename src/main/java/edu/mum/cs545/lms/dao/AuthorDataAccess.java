@@ -14,10 +14,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Biwota
  */
-public interface AuthorDataAccess extends JpaRepository<Author, Long>{
-    List<Author> findByFirstName(String fname);
-    List<Author> findByLastName(String lname);
-    List<Author> findById(long id);
+public interface AuthorDataAccess/* extends JpaRepository<Author, Long>*/{
+//    List<Author> findByFirstName(String fname);
+//    List<Author> findByLastName(String lname);
+//    List<Author> findById(long id);
+    void addAuthor(Author author);
     
         
 }

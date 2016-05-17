@@ -14,11 +14,12 @@ import java.util.List;
  */
 public interface PublisherService {
     
-    public void create(Publisher p);
-    public void update(Publisher p, Long id);
-    public void delete(Long id);
-    List<Publisher> findByFirstName(String fname);
-    List<Publisher> findByLastName(String lname);
-    List<Publisher> findById(long id);
+//    public void create(Publisher p);
+//    public void update(Publisher p, Long id);
+//    public void delete(Long id);
+//    List<Publisher> findByFirstName(String fname);
+//    List<Publisher> findByLastName(String lname);
+//    List<Publisher> findById(long id);
+    public void addPublisher(Publisher p);
     
 }
