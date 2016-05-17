@@ -46,7 +46,7 @@
             </ul>
         </li>
         <li>
-            <a href="admin/add"><i class="fa fa-fw fa-question"></i>Help</a>
+            <a href="home/help"><i class="fa fa-fw fa-question"></i>Help</a>
         </li>
     </ul>
 </div>

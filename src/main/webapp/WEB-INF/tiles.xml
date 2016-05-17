@@ -59,7 +59,7 @@
   
    <definition name="adduser" extends="base.definition">  
        <put-attribute name="title" value="Add User" />  
-       <put-attribute name="body" value="/WEB-INF/bodyfragments/_adduser.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_users.jsp" />  
    </definition>  
    
    <definition name="checkout" extends="base.definition">  
@@ -73,7 +73,7 @@
    </definition>  
    
    <definition name="listuser" extends="base.definition">  
-       <put-attribute name="title" value="List User" />  
+       <put-attribute name="title" value="List Users" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_listuser.jsp" />  
    </definition>  
          
@@ -83,8 +83,13 @@
    </definition>  
       
    <definition name="listsearch" extends="base.definition">  
-       <put-attribute name="title" value="Search Books" />  
+       <put-attribute name="title" value="List Books" />  
        <put-attribute name="body" value="/WEB-INF/bodyfragments/_listsearch.jsp" />  
+   </definition>  
+ 
+   <definition name="help" extends="base.definition">  
+       <put-attribute name="title" value="Help" />  
+       <put-attribute name="body" value="/WEB-INF/bodyfragments/_help.jsp" />  
    </definition>  
  
  

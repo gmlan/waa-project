@@ -15,12 +15,12 @@ import org.hibernate.annotations.GenericGenerator;
  */
 
 @Entity
-@Table(name="t_user")
+@Table(name="user")
 public class User implements Serializable{
     @Id    
     @GeneratedValue(generator="idGenerator")
-    @GenericGenerator(name="idGenerator", strategy="uuid")
-    @Column(name="userId")
+    @GenericGenerator(name="idGenerator", strategy="uuid2")
+    @Column(name="userId", unique = true)
     private String userId;
     
     @Column(name="userName")  
@@ -205,4 +205,5 @@ public class User implements Serializable{
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+    
 }
