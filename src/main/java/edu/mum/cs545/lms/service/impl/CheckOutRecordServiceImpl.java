@@ -32,8 +32,8 @@ public class CheckOutRecordServiceImpl implements CheckOutRecordService{
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void deleteCheckOutRecord(Long id) {
-        checkOutRecordDao.deleteCheckOutRecord(id);
+    public void deleteCheckOutRecord(CheckOutRecord checkOutRecord) {
+        checkOutRecordDao.deleteCheckOutRecord(checkOutRecord);
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
