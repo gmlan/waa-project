@@ -110,7 +110,7 @@ public class BookDataAccessImpl implements BookDataAccess{
             return null;
     }
     
-<<<<<<< Updated upstream
+
     public List<Book> getBookByKeyword(String keyword){
         Session session = SessionHelper.getSession();
         Query q = session.createQuery("from Book where title like '%" + keyword + "%'");
@@ -120,7 +120,7 @@ public class BookDataAccessImpl implements BookDataAccess{
             return q.list();
         else 
             return null;
-=======
+    }
     public Book getBookByIsbn(String isbn) {
         Session session = null;
         Transaction tx = null;
@@ -141,7 +141,7 @@ public class BookDataAccessImpl implements BookDataAccess{
             tx.commit();
             session.close();
         }
->>>>>>> Stashed changes
+
     }
     
     public Book getBookById(String id) {
