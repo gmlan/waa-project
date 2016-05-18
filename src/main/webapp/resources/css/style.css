@@ -84,3 +84,13 @@ div.categoryitem div.description{
     overflow-x: hidden;
 }
 
+.logo{
+    float:left;
+    width:40px;
+    height:40px;
+    margin:5px 0px 5px 10px;
+}
+
+.navbar-brand{
+    font-size: 24px;
+}
