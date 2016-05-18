@@ -19,9 +19,15 @@
     <!-- Data Tables -->
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
     
+    <!-- jQuery UI -->
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    
     <!-- jQuery -->
     <script src="static/js/jquery.js"></script>
 
+    <!-- jQuery UI -->
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="static/js/bootstrap.min.js"></script>
  

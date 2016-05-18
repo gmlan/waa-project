@@ -72,7 +72,7 @@ public class LoginController {
                 response.addCookie(new Cookie("rememberMe", "N"));
             }
 
-            return "redirect:/home/";
+            return "redirect:/";
         } else {
             result.addError(new ObjectError("*", "username/password error"));
         }

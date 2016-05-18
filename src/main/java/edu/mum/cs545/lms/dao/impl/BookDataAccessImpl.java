@@ -89,6 +89,15 @@ public class BookDataAccessImpl implements BookDataAccess{
         }
     }
     
+    public void updateBook(Book book) {
+        Session session = SessionHelper.getSession();
+        Transaction trans = session.beginTransaction();
+        session.merge(book);
+        trans.commit();
+        session.close();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public List<Book> getBookByCategory(BookCategory category) {
         Session session = SessionHelper.getSession();
         int cat = category.ordinal();
@@ -99,6 +108,40 @@ public class BookDataAccessImpl implements BookDataAccess{
             return q.list();
         else 
             return null;
+    }
+    
+
+    public List<Book> getBookByKeyword(String keyword){
+        Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from Book where title like '%" + keyword + "%'");
+        //q.setString(0,category);
+        List result = q.list();
+        if(result.size() > 0) 
+            return q.list();
+        else 
+            return null;
+    }
+    public Book getBookByIsbn(String isbn) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = SessionHelper.getSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("from Book where isbn=?");
+            q.setString(0,isbn);
+            List result = q.list();
+            if(result.size() > 0) 
+                return (Book)result.get(0);
+            else 
+                return null;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            tx.commit();
+            session.close();
+        }
+
     }
     
     public Book getBookById(String id) {
