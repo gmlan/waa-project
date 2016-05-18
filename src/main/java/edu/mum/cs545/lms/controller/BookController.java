@@ -44,7 +44,8 @@ public class BookController {
         model.addAttribute("book", new Book());
         model.addAttribute("bookTypes", Arrays.asList(BookType.values()));
 	model.addAttribute("bookCategories", Arrays.asList(BookCategory.values()));
-       
+       System.out.println("All books collection is -- " + bookservice.getAll().size());
+       System.out.println("Available  books -- " + bookservice.availableBooks().size());
         
         return "books";
         

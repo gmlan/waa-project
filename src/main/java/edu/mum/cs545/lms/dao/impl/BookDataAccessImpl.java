@@ -122,5 +122,15 @@ public class BookDataAccessImpl implements BookDataAccess{
             session.close();
         }
     }
+    public List<Book> availableBooks(){
+        Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from Book where quantity>"+0);
+        //q.setString(0,category);
+        List result = q.list();
+        if(result.size() > 0) 
+            return q.list();
+        else 
+            return null;
+    }
     
 }

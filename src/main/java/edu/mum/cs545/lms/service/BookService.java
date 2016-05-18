@@ -24,6 +24,7 @@ public interface BookService {
     public List<Book> getAll();
     List<Book> getBookByCategory(BookCategory category); 
     Book getBookById(String id);
+    public List<Book> availableBooks();
     
     
 }

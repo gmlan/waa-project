@@ -22,4 +22,5 @@ public interface BookDataAccess/* extends JpaRepository<Book,Long>*/{
     public List<Book> getAll();
     public List<Book> getBookByCategory(BookCategory category);
     Book getBookById(String id);
+    public List<Book> availableBooks();
 }
