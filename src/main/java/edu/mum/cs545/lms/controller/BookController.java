@@ -13,9 +13,11 @@ import edu.mum.cs545.lms.service.AuthorService;
 import edu.mum.cs545.lms.service.BookService;
 import java.util.Arrays;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,9 +51,10 @@ public class BookController {
     }
     
     @RequestMapping(value = "/books", method = RequestMethod.POST)
-    public String addBooks(@ModelAttribute("book")Book book){
+    public String addBooks(@ModelAttribute("book") @Valid Book book, BindingResult result){
       // this part is problamatic. Book is always coming in as null
-        
+        if(result.hasErrors())
+            return "books";
         bookservice.addBook(book);     
         
         return "redirect:/listbooks";
@@ -90,7 +93,9 @@ public class BookController {
     }
     
     @RequestMapping(value = "/authors", method = RequestMethod.POST)
-    public String add(@ModelAttribute("author") Author author){
+    public String add(@ModelAttribute("author") @Valid Author author, BindingResult result){
+            if(result.hasErrors())
+                return "authors";
             authorservice.addAuthor(author);
             System.out.println("Author info --" + author.getEmail());
             System.out.println("Author info --" + author.getFirstName());
