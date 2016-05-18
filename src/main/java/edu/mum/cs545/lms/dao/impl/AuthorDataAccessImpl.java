@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 public class AuthorDataAccessImpl implements AuthorDataAccess{
     
     public void addAuthor(Author author){         
+        System.out.println("Persisting author into table" + author.getFirstName() + " " + author.getLastName());
         Session session = SessionHelper.getSession();
         Transaction trans = session.beginTransaction();
         session.save(author);

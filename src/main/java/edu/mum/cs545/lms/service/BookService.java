@@ -21,6 +21,8 @@ public interface BookService {
 //    List<Book> findByIsbn(String isbn);
 //    List<Book> findByCategory(BookCategory category);
     public void addBook(Book b);
+    public List<Book> getAll();
+    List<Book> getBookByCategory(BookCategory category); 
     
     
 }

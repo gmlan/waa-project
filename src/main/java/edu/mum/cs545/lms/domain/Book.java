@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,6 +21,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -43,8 +49,8 @@ public class Book {
 
     //@Field(index = Index.YES, analyze = Analyze.NO, store = Store.YES)
     //@DateBridge(resolution = Resolution.DAY)
-    //@Temporal(TemporalType.DATE)
-    //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@NotNull(message = "Release Date can not be blank")
     private Date releaseDate;
 
@@ -66,7 +72,7 @@ public class Book {
 
     //@JsonIgnore
     @Lob
-    //@Column(name = "cover")
+    @Column(name = "cover")
     private byte[] bookCover;
 
     @Lob
@@ -76,26 +82,26 @@ public class Book {
     //@NotBlank(message = "Language can not be blank")
     private String language;
 
-    //@Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.ORDINAL)
     //@NotNull(message = "Book type can not be blank")
     private BookType bookType;
 
-    //@Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.ORDINAL)
     //@NotNull(message = "Book type can not be blank")
     private BookCategory bookCategory;
 
     //@IndexedEmbedded
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "BookAuthor", joinColumns = @JoinColumn(name = "bookId"), inverseJoinColumns = @JoinColumn(name = "authorId"))
-    private List<Author> authors = new ArrayList<Author>();
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //@JoinTable(name = "BookAuthor", joinColumns = @JoinColumn(name = "bookId"), inverseJoinColumns = @JoinColumn(name = "authorId"))
+    //private List<Author> authors = new ArrayList<Author>();
     
     //??? [check if we need this]
     //private transient List<Long> authorIds = new ArrayList<>();
 
     //@IndexedEmbedded
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "publisherId")
-    private Publisher publisher;
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "publisherId")
+    //private Publisher publisher;
 
     //private transient long publisherId;
 
@@ -243,21 +249,21 @@ public class Book {
             this.bookCategory = bookCategory;
     }
 
-    public List<Author> getAuthors() {
-            return authors;
-    }
+//    public List<Author> getAuthors() {
+//            return authors;
+//    }
 
-    public void setAuthors(List<Author> authors) {
-            this.authors = authors;
-    }
+//    public void setAuthors(List<Author> authors) {
+//            this.authors = authors;
+//    }
 
-    public Publisher getPublisher() {
-            return publisher;
-    }
+    //public Publisher getPublisher() {
+    //        return publisher;
+    //}
 
-    public void setPublisher(Publisher publisher) {
-            this.publisher = publisher;
-    }
+    //public void setPublisher(Publisher publisher) {
+     //       this.publisher = publisher;
+    //}
 
 //    public List<Review> getReviews() {
 //            return reviews;
@@ -275,14 +281,14 @@ public class Book {
 //            this.orderlines = orderlines;
 //    }
 
-    public String getAuthorName(){
-
-            String name = "";
-            for(Author a : this.authors)
-                    name += a.getFirstName() + " " + a.getLastName() + " ";
-
-            return name;
-    }
+//    public String getAuthorName(){
+//
+//            String name = "";
+//            for(Author a : this.authors)
+//                    name += a.getFirstName() + " " + a.getLastName() + " ";
+//
+//            return name;
+//    }
 
     
 }
