@@ -31,12 +31,12 @@
                 <li>
                     <a href="listauthors">List Authors</a>
                 </li>
-                <li>
+<!--                <li>
                     <a href="publishers">Add Publisher</a>
                 </li>
                 <li>
                     <a href="listpublishers">List Publisher</a>
-                </li>
+                </li>-->
             </ul>
         </li>
         <li>
