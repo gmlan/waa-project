@@ -1,12 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script>
-    $(function(){
-       //$("#btn")
-    })
-</script>
-<h1>Search </h1>
-<hr> 
+ 
 <form action="search" method="POST" />
 <div class="search">
     <input type="text" id="search" name="q" placeholder="input in here to start search">

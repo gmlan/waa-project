@@ -2,14 +2,19 @@
 <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav side-nav">
         <li class="active">
-            <a href="home"><i class="fa fa-fw fa-home"></i> Dashboard</a>
-        </li> 
-        <li>
             <a href="search"><i class="fa fa-fw fa-search"></i>Search</a>
         </li>
         
         <li>
-            <a href="checkout"><i class="fa fa-fw fa-check"></i>Checkout</a>
+            <a href="javascript:;" data-toggle="collapse" data-target="#checkout"><i class="fa fa-fw fa-check"></i>Checkout <i class="fa fa-fw fa-caret-down"></i></a>
+            <ul id="checkout" class="collapse">
+                <li>
+                    <a href="checkout">Add Checkout</a>
+                </li>
+                <li>
+                    <a href="listCheckout">List Checkout</a>
+                </li>               
+            </ul>
         </li>
         <li>
             <a href="javascript:;" data-toggle="collapse" data-target="#bookItem"><i class="fa fa-fw fa-book"></i> Books <i class="fa fa-fw fa-caret-down"></i></a>
@@ -42,6 +47,12 @@
                 </li>
                 <li>
                     <a href="admin/list">List User</a>
+                </li>
+                <li>
+                    <a href="addMember">Add Member</a>
+                </li>
+                <li>
+                    <a href="listMember">List Member</a>
                 </li>
             </ul>
         </li>
