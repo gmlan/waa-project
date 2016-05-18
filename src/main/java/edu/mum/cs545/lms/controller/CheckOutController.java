@@ -9,14 +9,17 @@ import edu.mum.cs545.lms.domain.Book;
 import edu.mum.cs545.lms.domain.CheckOutRecord;
 import edu.mum.cs545.lms.domain.Member;
 import edu.mum.cs545.lms.domain.User;
+import edu.mum.cs545.lms.service.BookService;
 import edu.mum.cs545.lms.service.CheckOutRecordService;
 import edu.mum.cs545.lms.service.MemberService;
 import edu.mum.cs545.lms.service.UserService;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,37 +39,15 @@ public class CheckOutController {
     @Autowired
     CheckOutRecordService checkOutRecordService;
     
+    @Autowired
+    BookService bookService;
+    
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
     public String checkout(Model model){
-        //model.addAttribute("userlist",userService.getAll());
-        Member member1 = new Member();
-        member1.setMemberId("1122");
-        member1.setFirstName("Michael");
+               
+        model.addAttribute("memberList",memberService.getAll());
         
-        Member member2 = new Member();
-        member2.setMemberId("3344");
-        member2.setFirstName("Biniam");
-        
-        List<Member> memberList = new ArrayList<Member>();
-        memberList.add(member1);
-        memberList.add(member2);
-        
-        
-        Book book1 = new Book();
-        book1.setIsbn("1111111");
-        book1.setTitle("Spring MVC");
-        
-        Book book2 = new Book();
-        book2.setIsbn("222222");
-        book2.setTitle("JSF");
-        
-        List<Book> bookList = new ArrayList<Book>();
-        bookList.add(book1);
-        bookList.add(book2);
-        
-        model.addAttribute("memberList",memberList);
-        
-        model.addAttribute("bookList",bookList);
+        model.addAttribute("bookList",bookService.getAll());
         
         CheckOutRecord newCheckOut = new CheckOutRecord();
         
@@ -82,8 +63,14 @@ public class CheckOutController {
     }
     
     @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-    public String addNewCheckout(@ModelAttribute("newCheckOut") CheckOutRecord newCheckOut, RedirectAttributes redirectAttributes){
-        //redirectAttributes.addAttribute("tagline","checkout saved");
+    public String addNewCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord newCheckOut, 
+            BindingResult result, RedirectAttributes redirectAttributes, Model model){
+        
+        if (result.hasErrors()) {
+            model.addAttribute("memberList",memberService.getAll());
+            model.addAttribute("bookList",bookService.getAll());
+            return "checkout";
+        }
         checkOutRecordService.createCheckOutRecord(newCheckOut);
         return "redirect:/listCheckout";
     }
@@ -93,12 +80,21 @@ public class CheckOutController {
     public String updateCheckout(Model model, @PathVariable Long id){
         CheckOutRecord checkout = checkOutRecordService.findById(id);
         model.addAttribute("newCheckOut",checkout);
-        
+        model.addAttribute("memberList",memberService.getAll());
+        model.addAttribute("bookList",bookService.getAll());
         return "checkout";
     }
     
     @RequestMapping(value = "/checkout/edit/{id}", method = RequestMethod.POST)
-    public String saveUpdateCheckout(@ModelAttribute("newCheckOut") CheckOutRecord checkout, @PathVariable Long id, RedirectAttributes redirectAttributes){
+    public String saveUpdateCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord checkout, BindingResult result, 
+            @PathVariable Long id, RedirectAttributes redirectAttributes, Model model){
+        
+        if (result.hasErrors()) {
+            model.addAttribute("memberList",memberService.getAll());
+            model.addAttribute("bookList",bookService.getAll());
+            return "checkout";
+        }
+        
         checkOutRecordService.updateCheckOutRecord(checkout);
         redirectAttributes.addFlashAttribute("message", "Checkout updated successfully");
         return "redirect:/listCheckout";
