@@ -43,7 +43,7 @@
 
                         table = $('#table').DataTable({
                             "aaData": data,
-                            "pageLength": 5,
+                            "pageLength": 10,
                             "aoColumns": [
                                 {"mDataProp": "userName"},
                                 {"mDataProp": "type"},

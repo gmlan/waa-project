@@ -7,7 +7,10 @@ package edu.mum.cs545.lms.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.Email;
 
 /**
  *
@@ -23,9 +26,11 @@ public class User implements Serializable{
     @Column(name="userId", unique = true)
     private String userId;
     
+    @Size(min=4, message="At least 4 characters")
     @Column(name="userName")  
     private String userName;
     
+    @Size(min=8, message="At least 8 characters")
     @Column(name="password")
     private String password;
     
@@ -41,17 +46,21 @@ public class User implements Serializable{
     @Transient
     private boolean loggedIn;
     
+    @Size(min=4, message="At least 4 characters")
     @Column(name="firstName")
     String firstName;
     
+    @Size(min=4, message="At least 4 characters")
     @Column(name="lastName")
     String lastName;
     
+    @Email(message = "Bad email format")
     @Column(name="email")
     String email;
     
     @Column(name="address")
     private String address;
+    
     
     @Column(name="phone")
     private String phone;

@@ -11,7 +11,7 @@
      http://www.springframework.org/schema/mvc
      http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
   
-    <mvc:annotation-driven />
+    <mvc:annotation-driven validator="validator"/>
     <context:component-scan base-package="edu.mum.cs545.lms" />
         
     <context:annotation-config />
@@ -39,12 +39,18 @@
     </bean>  
     
     
-	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	  <property name="maxUploadSize" value="10240000"/>
-	</bean>
+    <bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      <property name="maxUploadSize" value="10240000"/>
+    </bean>
 	
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
+       
+    <!-- Validator -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+    <!-- User's validator -->    
+    <bean id="userValidator" class="edu.mum.cs545.lms.validator.UserValidator" />
 </beans>
