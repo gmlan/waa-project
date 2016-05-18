@@ -46,7 +46,7 @@ public class CheckOutController {
                
         model.addAttribute("memberList",memberService.getAll());
         
-        model.addAttribute("bookList",bookService.getAll());
+        model.addAttribute("bookList",bookService.availableBooks());
         
         CheckOutRecord newCheckOut = new CheckOutRecord();
         
@@ -67,9 +67,10 @@ public class CheckOutController {
         
         if (result.hasErrors()) {
             model.addAttribute("memberList",memberService.getAll());
-            model.addAttribute("bookList",bookService.getAll());
+            model.addAttribute("bookList",bookService.availableBooks());
             return "checkout";
         }
+//        System.out.println("new isbn...." + newCheckOut.getISBN());
         checkOutRecordService.createCheckOutRecord(newCheckOut);
         return "redirect:/listCheckout";
     }
@@ -80,7 +81,7 @@ public class CheckOutController {
         CheckOutRecord checkout = checkOutRecordService.findById(id);
         model.addAttribute("newCheckOut",checkout);
         model.addAttribute("memberList",memberService.getAll());
-        model.addAttribute("bookList",bookService.getAll());
+        model.addAttribute("bookList",bookService.availableBooks());
         return "checkout";
     }
     
@@ -90,7 +91,7 @@ public class CheckOutController {
         
         if (result.hasErrors()) {
             model.addAttribute("memberList",memberService.getAll());
-            model.addAttribute("bookList",bookService.getAll());
+            model.addAttribute("bookList",bookService.availableBooks());
             return "checkout";
         }
         
@@ -103,7 +104,7 @@ public class CheckOutController {
     public String deleteCheckout(@PathVariable Long id, RedirectAttributes redirectAttributes){
         CheckOutRecord checkout = checkOutRecordService.findById(id);
         checkOutRecordService.deleteCheckOutRecord(checkout);
-        redirectAttributes.addFlashAttribute("message", "Checkout deleted successfully");
+        redirectAttributes.addFlashAttribute("message", "Check in success");
         
         return "redirect:/listCheckout";
     }

@@ -22,10 +22,14 @@
                 <td>${checkout.dateCheckout}</td>
                 <td>${checkout.dueDate}</td>
                 <td>
-                    <a href='<c:url value="checkout/edit/${checkout.id}"/>'>Edit</a><br>  
-                    <a href='<c:url value="checkout/delete/${checkout.id}" />'>Delete</a><br>
-                    </td>
-                </tr>
+                    <a href='<c:url value="checkout/edit/${checkout.id}"/>' class="btn btn-primary">
+                            Edit
+                    </a> 
+                    <a href='<c:url value="checkout/delete/${checkout.id}" />' class="btn btn-success">
+                            Check in
+                    </a><br>
+                </td>
+            </tr>
             </tr>
         </c:forEach>
     </table>
