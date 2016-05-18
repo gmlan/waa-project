@@ -1,5 +1,3 @@
-<h2>Hi All</h2>
- 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -22,9 +20,7 @@
 
 		<br />
 
-		<form:form modelAttribute="book"
-			action="${pageContext.request.contextPath}/books/add" method="post"
-			enctype="multipart/form-data">
+		<form:form modelAttribute="book" action="${pageContext.request.contextPath}/books" method="post" enctype="multipart/form-data">
 
 			<div class="row">
 				<div class="col-md-4">
@@ -122,8 +118,7 @@
 
 				<div class="col-md-4">
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Book
-							Cover</span>
+						<span class="input-group-addon" id="basic-addon1">Book Cover</span>
 						<form:input path="cover" class="form-control" type="file" />
 					</div>
 				</div>
@@ -176,19 +171,20 @@
 			<br />
 
 			<div class="row">
-
-				<div class="col-md-4">
+                                
+				<!--div class="col-md-4">
 					<div class="input-group">
 						<span class="input-group-addon" id="basic-addon1">Publisher
 						</span>
                                            
 						<!-- form:select path="publisherId" items="$publishers}" class="form-control" itemLabel="name" itemValue="id" --><!--/form:select -->
                                             
-					</div>
-				</div>
+<!--					</div>
+				</div>-->
+<!--
 				<div class="col-md-2">
-					<!--form:errors path="publisherId" cssStyle="color:red" role="alert" /-->
-				</div>
+					form:errors path="publisherId" cssStyle="color:red" role="alert" /
+				</div>-->
 
 				<div class="col-md-4">
 					<div class="input-group">

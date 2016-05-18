@@ -19,4 +19,6 @@ public interface BookDataAccess/* extends JpaRepository<Book,Long>*/{
     //List<Book> findByIsbn(String isbn);
     //List<Book> findByCategory(BookCategory category);
     void addBook(Book book);
+    public List<Book> getAll();
+    public List<Book> getBookByCategory(BookCategory category); 
 }
