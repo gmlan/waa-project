@@ -17,11 +17,9 @@
                 <th>Quantity</th>
                 <th>Pages</th>
                 <th>Dimension</th>
-                <th>Author</th>
                 <th>Language</th>
                 <th>Type</th>
                 <th>Category</th>
-                <th>Publisher</th>
                 <th></th>
             </tr>
         </thead>
@@ -58,16 +56,14 @@
                                 {"mDataProp": "quantity"},
                                 {"mDataProp": "length"},
                                 {"mDataProp": "dimension"},
-                                {"mDataProp": "authors"},
                                 {"mDataProp": "language"},
                                 {"mDataProp": "bookType"},
-                                {"mDataProp": "bookCategory"},
-                                {"mDataProp": "publisher"},
-                                { "mDataProp": "id",
-                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {							
-                                                $(nTd).html("<a href='book/edit/" + oData.userId + "'>Checkout</a>");
-                                        }
-                                }	
+                                {"mDataProp": "bookCategory"}
+//                                { "mDataProp": "id",
+//                                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {							
+//                                                $(nTd).html("<a href='book/edit/" + oData.userId + "'>Checkout</a>");
+//                                        }
+//                                }	
                             ]
                         });
                     }

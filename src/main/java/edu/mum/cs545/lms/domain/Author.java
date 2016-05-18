@@ -35,7 +35,7 @@ public class Author {
     private String firstName;
 
     //@Field
-    @NotBlank(message = "First Name filed can not be Empty")
+    @NotBlank(message = "Last Name filed can not be Empty")
     private String lastName;
 
     @Email(message = "Email field not valid")
@@ -88,12 +88,12 @@ public class Author {
     }
     
     public String getLastName() {
-            return firstName;
+            return lastName;
     }
 
 
-    public void setLastName(String firstName) {
-            this.firstName = firstName;
+    public void setLastName(String lastName) {
+            this.lastName = lastName;
     }
 
 }

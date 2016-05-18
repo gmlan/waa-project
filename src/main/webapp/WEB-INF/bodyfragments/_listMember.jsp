@@ -34,8 +34,12 @@
                 <td>${member.state}</td>
                 <td>${member.country}</td>
                 <td>
-                    <a href='<c:url value="member/edit/${member.memberId}"/>'>Edit</a><br>  
-                    <a href='<c:url value="member/delete/${member.memberId}" />'>Delete</a><br>
+                    <a href='<c:url value="member/edit/${member.memberId}"/>' class="btn btn-primary">
+                        Edit
+                    </a>
+                    <a href='<c:url value="member/delete/${member.memberId}" />' class="btn btn-danger">
+                        Delete
+                    </a><br>
                     </td>
                 </tr>
         </c:forEach>

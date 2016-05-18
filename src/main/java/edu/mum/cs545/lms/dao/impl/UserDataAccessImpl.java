@@ -8,12 +8,10 @@ package edu.mum.cs545.lms.dao.impl;
 import edu.mum.cs545.lms.domain.User;
 import java.util.List;
 import edu.mum.cs545.lms.dao.UserDataAccess;
-import edu.mum.cs545.lms.util.SessionHelper;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

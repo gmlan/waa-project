@@ -9,6 +9,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.SecondaryTable;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -18,15 +22,21 @@ import javax.persistence.SecondaryTable;
 @SecondaryTable(name="Address")
 public class Member {
     @Id
+    @NotBlank(message = "ID is required")
     private String memberId;
+    @NotBlank(message = "First name is required")
     private String firstName;
+    @NotBlank(message = "Last name is required")
     private String lastName;
+    @Pattern(regexp="[0-9]+",message = "Only numbers allowed.")
     private String phone;
+    @NotEmpty @Email(message = "Email field not valid")
     private String email;
     
     @Column(table = "Address")
     private String street;
     @Column(table = "Address")
+    @Pattern(regexp="\\d{5}", message = "should be 5 digits")
     private String zip;
     @Column(table = "Address")
     private String city;

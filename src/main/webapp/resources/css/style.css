@@ -51,6 +51,13 @@ div.search div span{
     margin: 3px auto;
 }
 
+div.search div.loader{
+    background-color:#fff;
+    position: relative;
+    left:-75px;
+    top:-2px;
+}
+
 div.category {
     text-align: center;
     border: none;
@@ -70,4 +77,20 @@ div.categoryitem div.description{
     font-weight: bolder;
 }
 
+.ui-autocomplete {
+    max-height: 400px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
 
+.logo{
+    float:left;
+    width:40px;
+    height:40px;
+    margin:5px 0px 5px 10px;
+}
+
+.navbar-brand{
+    font-size: 24px;
+}

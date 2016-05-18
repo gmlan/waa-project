@@ -16,11 +16,12 @@
 
 
 <form:form class="form-horizontal" modelAttribute="newMember" >
-
+    <form:errors path="*" cssClass="alert alert-danger" element="div"/>
     <div class="form-group">
         <label for="memberId" class="col-sm-2 control-label">Member Id</label>
         <div class="col-sm-6">
             <form:input type="text" path="memberId" class="form-control" id="memberId" placeholder="member Id" />
+             <form:errors path="memberId" cssStyle="color:red" />
         </div>
     </div>
 
@@ -28,6 +29,7 @@
         <label for="firstName" class="col-sm-2 control-label">First Name</label>
         <div class="col-sm-6">
             <form:input type="text" path="firstName" class="form-control" id="firstName" placeholder="first name" />
+            <form:errors path="firstName" cssStyle="color:red" />
         </div>
     </div>
 
@@ -35,6 +37,7 @@
         <label for="lastName" class="col-sm-2 control-label">Last Name</label>
         <div class="col-sm-6">
             <form:input type="text" path="lastName" class="form-control" id="lastName" placeholder="last name" />
+            <form:errors path="lastName" cssStyle="color:red" />
         </div>
     </div>
 
@@ -42,6 +45,7 @@
         <label for="email" class="col-sm-2 control-label">Email</label>
         <div class="col-sm-6">
             <form:input type="text" path="email" class="form-control" id="email" placeholder="eg. user@mydomain.com" />
+            <form:errors path="email" cssStyle="color:red" />
         </div>
     </div>
 
@@ -49,6 +53,7 @@
         <label for="phone" class="col-sm-2 control-label">Phone</label>
         <div class="col-sm-6">
             <form:input type="text" path="phone" class="form-control" id="phone" placeholder="phone" />
+            <form:errors path="phone" cssStyle="color:red" />
         </div>
     </div>
 
@@ -66,6 +71,7 @@
                 <label for="zip" class="col-sm-2 control-label">Zip</label>
                 <div class="col-sm-6">
                     <form:input type="text" path="zip" class="form-control" id="zip" placeholder="zip" />
+                    <form:errors path="zip" cssStyle="color:red" />
                 </div>
             </div>
 

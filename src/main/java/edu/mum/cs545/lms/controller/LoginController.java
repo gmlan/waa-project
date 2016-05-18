@@ -53,10 +53,9 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = {RequestMethod.POST})
     public String authenticate(HttpSession session, HttpServletResponse response, @ModelAttribute("user") User user, Model model, BindingResult result) {
-        if (userService.authentication(user) || 
-                ("root".equals(user.getUserName()) && 
-                  session.getServletContext().getInitParameter("root_password").equals(user.getPassword()))
-                ){
+        if (("root".equals(user.getUserName()) &&  session.getServletContext().getInitParameter("root_password").equals(user.getPassword())) ||
+             userService.authentication(user) 
+            ){
                         
             user.setLoggedIn(true);
             
@@ -72,7 +71,7 @@ public class LoginController {
                 response.addCookie(new Cookie("rememberMe", "N"));
             }
 
-            return "redirect:/home/";
+            return "redirect:/";
         } else {
             result.addError(new ObjectError("*", "username/password error"));
         }

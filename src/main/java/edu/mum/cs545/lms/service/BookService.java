@@ -21,10 +21,13 @@ public interface BookService {
 //    List<Book> findByIsbn(String isbn);
 //    List<Book> findByCategory(BookCategory category);
     public void addBook(Book b);
-    public List<Book> getAll();
+    public List<Book> getAll();    
+    public List<Book> getBookByKeyword(String keyword);
     List<Book> getBookByCategory(BookCategory category); 
     Book getBookById(String id);
     public List<Book> availableBooks();
+    public Book getBookByIsbn(String isbn);
+    public void updateBook(Book book);
     
     
 }
