@@ -26,6 +26,8 @@ public interface BookService {
     List<Book> getBookByCategory(BookCategory category); 
     Book getBookById(String id);
     public List<Book> availableBooks();
+    public Book getBookByIsbn(String isbn);
+    public void updateBook(Book book);
     
     
 }

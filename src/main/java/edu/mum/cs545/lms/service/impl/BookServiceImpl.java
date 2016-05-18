@@ -47,6 +47,12 @@ public class BookServiceImpl implements BookService{
      public List<Book> availableBooks(){
          return bookDao.availableBooks();
      }
+     public Book getBookByIsbn(String isbn){
+         return bookDao.getBookByIsbn(isbn);
+     }
+     public void updateBook(Book book){
+         bookDao.updateBook(book);
+     }
 //    public void create(Book book) {
 //        bookDao.save(book);
 //    }
