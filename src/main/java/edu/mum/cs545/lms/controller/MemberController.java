@@ -7,9 +7,11 @@ package edu.mum.cs545.lms.controller;
 
 import edu.mum.cs545.lms.domain.Member;
 import edu.mum.cs545.lms.service.MemberService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +42,10 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/addMember", method = RequestMethod.POST)
-    public String addMemeberForm(@ModelAttribute("newMember")Member newMember){
+    public String addMemeberForm(@ModelAttribute("newMember") @Valid Member newMember, BindingResult result){
+         if (result.hasErrors()) {
+             return "addMember";
+         }
         memberService.addMember(newMember);
         return "redirect:/listMember";
     }
@@ -54,7 +59,13 @@ public class MemberController {
     }
     
     @RequestMapping(value = "/member/edit/{id}", method = RequestMethod.POST)
-    public String saveUpdateMember(@ModelAttribute("newMember") Member member, @PathVariable String id, RedirectAttributes redirectAttributes){
+    public String saveUpdateMember(@ModelAttribute("newMember") @Valid Member member, BindingResult result, 
+            @PathVariable String id, RedirectAttributes redirectAttributes){
+        
+        if (result.hasErrors()) {
+             return "addMember";
+         }
+        
         memberService.updateMember(member);
         redirectAttributes.addFlashAttribute("message", "member updated successfully");
         return "redirect:/listMember";

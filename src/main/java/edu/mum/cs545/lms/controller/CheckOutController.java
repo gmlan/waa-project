@@ -31,81 +31,89 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  */
 @Controller
 public class CheckOutController {
-    
-     @Autowired
+
+    @Autowired
     MemberService memberService;
-    
+
     @Autowired
     CheckOutRecordService checkOutRecordService;
-    
+
     @Autowired
     BookService bookService;
-    
+
     @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String checkout(Model model){
-               
-        model.addAttribute("memberList",memberService.getAll());
-        
-        model.addAttribute("bookList",bookService.availableBooks());
-        
+    public String checkout(Model model) {
+
+        model.addAttribute("memberList", memberService.getAll());
+
+        model.addAttribute("bookList", bookService.availableBooks());
+
         CheckOutRecord newCheckOut = new CheckOutRecord();
-        
+
         model.addAttribute("newCheckOut", newCheckOut);
-        
+
         return "checkout";
     }
-    
+
     @RequestMapping(value = "/listCheckout", method = RequestMethod.GET)
-    public String listCheckout(Model model){
+    public String listCheckout(Model model) {
         model.addAttribute("checkoutList", checkOutRecordService.getAll());
         return "listCheckout";
     }
-    
+
     @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-    public String addNewCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord newCheckOut, 
-            BindingResult result, RedirectAttributes redirectAttributes, Model model){
-        
+    public String addNewCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord newCheckOut,
+            BindingResult result, RedirectAttributes redirectAttributes, Model model) {
+
         if (result.hasErrors()) {
-            model.addAttribute("memberList",memberService.getAll());
-            model.addAttribute("bookList",bookService.availableBooks());
+            model.addAttribute("memberList", memberService.getAll());
+            model.addAttribute("bookList", bookService.availableBooks());
             return "checkout";
         }
 //        System.out.println("new isbn...." + newCheckOut.getISBN());
+        Book book = bookService.getBookByIsbn(newCheckOut.getISBN());
+        book.setQuantity(book.getQuantity() - 1);
+        bookService.updateBook(book);
+
         checkOutRecordService.createCheckOutRecord(newCheckOut);
         return "redirect:/listCheckout";
     }
-    
-    
+
     @RequestMapping(value = "/checkout/edit/{id}", method = RequestMethod.GET)
-    public String updateCheckout(Model model, @PathVariable Long id){
+    public String updateCheckout(Model model, @PathVariable Long id) {
         CheckOutRecord checkout = checkOutRecordService.findById(id);
-        model.addAttribute("newCheckOut",checkout);
-        model.addAttribute("memberList",memberService.getAll());
-        model.addAttribute("bookList",bookService.availableBooks());
+        model.addAttribute("newCheckOut", checkout);
+        model.addAttribute("memberList", memberService.getAll());
+        model.addAttribute("bookList", bookService.availableBooks());
         return "checkout";
     }
-    
+
     @RequestMapping(value = "/checkout/edit/{id}", method = RequestMethod.POST)
-    public String saveUpdateCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord checkout, BindingResult result, 
-            @PathVariable Long id, RedirectAttributes redirectAttributes, Model model){
-        
+    public String saveUpdateCheckout(@ModelAttribute("newCheckOut") @Valid CheckOutRecord checkout, BindingResult result,
+            @PathVariable Long id, RedirectAttributes redirectAttributes, Model model) {
+
         if (result.hasErrors()) {
-            model.addAttribute("memberList",memberService.getAll());
-            model.addAttribute("bookList",bookService.availableBooks());
+            model.addAttribute("memberList", memberService.getAll());
+            model.addAttribute("bookList", bookService.availableBooks());
             return "checkout";
         }
-        
+
         checkOutRecordService.updateCheckOutRecord(checkout);
         redirectAttributes.addFlashAttribute("message", "Checkout updated successfully");
         return "redirect:/listCheckout";
     }
-    
+
     @RequestMapping(value = "/checkout/delete/{id}", method = RequestMethod.GET)
-    public String deleteCheckout(@PathVariable Long id, RedirectAttributes redirectAttributes){
+    public String deleteCheckout(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         CheckOutRecord checkout = checkOutRecordService.findById(id);
-        checkOutRecordService.deleteCheckOutRecord(checkout);
-        redirectAttributes.addFlashAttribute("message", "Check in success");
         
+        Book book = bookService.getBookByIsbn(checkout.getISBN());
+        book.setQuantity(book.getQuantity() + 1);
+        bookService.updateBook(book);
+        checkOutRecordService.deleteCheckOutRecord(checkout);
+        
+        redirectAttributes.addFlashAttribute("message", "Check in success");
+
         return "redirect:/listCheckout";
     }
 }

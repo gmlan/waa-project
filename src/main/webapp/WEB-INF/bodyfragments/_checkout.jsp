@@ -83,7 +83,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="memberId" class="col-sm-2 control-label">User Id</label>
+        <label for="memberId" class="col-sm-2 control-label">Member Id</label>
         <div class="col-sm-4">
 
             <form:select path="memberId" class="form-control mrgn-bttm-md" id="memberId">
