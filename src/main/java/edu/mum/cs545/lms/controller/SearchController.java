@@ -2,10 +2,11 @@ package edu.mum.cs545.lms.controller;
 
 import edu.mum.cs545.lms.domain.Book;
 import edu.mum.cs545.lms.domain.BookCategory;
+import edu.mum.cs545.lms.service.BookService;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SearchController {
 
     public SearchController() { 
-        categories = new HashMap<String, String>();        
+        categories = new TreeMap<String, String>();        
         List<BookCategory> bookCategoryList = Arrays.asList(BookCategory.values());
         for(BookCategory cat : bookCategoryList){
             categories.put(cat.name(), String.format("images/%d.jpg", cat.ordinal()));
@@ -49,19 +50,16 @@ public class SearchController {
     }
     
     
-    //@Autowired
-   // private BookService bookService;
+    @Autowired
+   private BookService bookService;
     
     @RequestMapping(value="/rest/list",method=RequestMethod.GET )
     public @ResponseBody List<Book> getSearchList(HttpServletRequest request,@RequestParam String q,@RequestParam String c){
-        System.out.println("q=" + q);
-        System.out.println("category=" + c);
-        
-        
-        if(q != null){//key words
+        if(!"".equals(q)){//key words
+            return bookService.getBookByKeyword(q);
         }
-        else if(c != null){//category
-       //     return  bookService.findByCategory(Enum.valueOf(BookCategory.class, c));
+        else if(!"".equals(c)){//category
+            return bookService.getBookByCategory(Enum.valueOf(BookCategory.class, c));
         }
         
         return null;

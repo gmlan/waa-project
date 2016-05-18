@@ -37,7 +37,10 @@ public class BookServiceImpl implements BookService{
      public List<Book> getBookByCategory(BookCategory category) {
          return bookDao.getBookByCategory(category) ;
          
-     }
+     }     
+    public List<Book> getBookByKeyword(String keyword){
+        return bookDao.getBookByKeyword(keyword);
+    }
      public Book getBookById(String id){
          return bookDao.getBookById(id);
      }

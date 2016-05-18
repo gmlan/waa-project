@@ -101,6 +101,17 @@ public class BookDataAccessImpl implements BookDataAccess{
             return null;
     }
     
+    public List<Book> getBookByKeyword(String keyword){
+        Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from Book where title like '%" + keyword + "%'");
+        //q.setString(0,category);
+        List result = q.list();
+        if(result.size() > 0) 
+            return q.list();
+        else 
+            return null;
+    }
+    
     public Book getBookById(String id) {
         Session session = null;
         Transaction tx = null;

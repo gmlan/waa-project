@@ -37,17 +37,16 @@ public class loginFilter implements Filter {
      * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-//        HttpServletRequest req = (HttpServletRequest) request;
-//        HttpServletResponse resp = (HttpServletResponse) response;
-//
-//        User user = (User) req.getSession().getAttribute(Constants.CURRENT_USER);                
-//        if ((user != null && user.isLoggedIn()) ||
-//             req.getRequestURI().startsWith(req.getContextPath() + "/login")) {
-            chain.doFilter(request, response);            
-//        } 
-//        else {
-//            resp.sendRedirect(req.getContextPath() + "/login");
-//        }
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+
+        User user = (User) req.getSession().getAttribute(Constants.CURRENT_USER);
+        if ((user != null && user.isLoggedIn())
+                || req.getRequestURI().startsWith(req.getContextPath() + "/login")) {
+            chain.doFilter(request, response);
+        } else {
+            resp.sendRedirect(req.getContextPath() + "/login");
+        }
     }
 
     /**
