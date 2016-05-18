@@ -6,9 +6,6 @@
 package edu.mum.cs545.lms.dao;
 
 import edu.mum.cs545.lms.domain.Author;
-import java.io.Serializable;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *

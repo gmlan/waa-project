@@ -6,11 +6,7 @@
 package edu.mum.cs545.lms.dao;
 
 import edu.mum.cs545.lms.domain.CheckOutRecord;
-import java.io.Serializable;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
-
 /**
  *
  * @author Mike

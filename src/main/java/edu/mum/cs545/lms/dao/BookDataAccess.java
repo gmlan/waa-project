@@ -8,7 +8,6 @@ package edu.mum.cs545.lms.dao;
 import edu.mum.cs545.lms.domain.Book;
 import edu.mum.cs545.lms.domain.BookCategory;
 import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *

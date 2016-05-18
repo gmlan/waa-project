@@ -11,6 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.transaction.Transactional;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -29,10 +30,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDataAccess dao;
     
+    @Transactional    
     public List<User> getAll() {
         return dao.getAll();                
     }
     
+    @Transactional
     public void addUser(User user){
         try {
             //Encypt the user's password
@@ -43,6 +46,7 @@ public class UserServiceImpl implements UserService {
         dao.addUser(user);
     }
     
+    @Transactional
     public boolean authentication(User user){
         User savedUser = dao.getUserByName(user.getUserName());
         try {
@@ -52,6 +56,11 @@ public class UserServiceImpl implements UserService {
             Logger.getLogger(UserServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+    
+    @Transactional
+    public User getUserById(String id) {
+        return dao.getUserById(id);
     }
     
     private String encrypt(String source) throws NoSuchAlgorithmException{
@@ -69,7 +78,4 @@ public class UserServiceImpl implements UserService {
         
     }
 
-    public User getUserById(String id) {
-        return dao.getUserById(id);
-    }
 }
