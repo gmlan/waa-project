@@ -23,6 +23,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,33 +40,33 @@ public class Book {
     @GeneratedValue
     private long id;
 
-    //@NotBlank(message = "ISBN can not be blank")
+    @NotBlank(message = "ISBN can not be blank")
     //@Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
     //@Pattern(regexp = "(\\d){13}|(\\d){10}", message = "The ISBN is not valid - should have 10 or 13 digits")
     private String isbn;
 
     //@Field(index = Index.YES, analyze = Analyze.YES, store = Store.NO)
-    //@NotBlank(message = "Title can not be blank")
+    @NotBlank(message = "Title can not be blank")
     private String title;
 
     //@Field(index = Index.YES, analyze = Analyze.NO, store = Store.YES)
     //@DateBridge(resolution = Resolution.DAY)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@NotNull(message = "Release Date can not be blank")
+    @NotNull(message = "Release Date can not be blank")
     private Date releaseDate;
 
-    //@NotNull(message = "Price can not be blank")
+    @NotNull(message = "Price can not be blank")
     private double price;
 
-    //@NotNull(message = "Price can not be blank")
+    @NotNull(message = "Price can not be blank")
     private int quantity;
 
     //@Max(value = 2000, message = "Page length can not be greater than 2000")
     //@NotNull(message = "Length can not be blank")
     private int length;
 
-    //@NotBlank(message = "Dimensions can not be blank")
+    @NotBlank(message = "Dimensions can not be blank")
     private String dimension;
 
     //@JsonIgnore

@@ -58,9 +58,9 @@ public class BookDataAccessImpl implements BookDataAccess{
         b2.setQuantity(90);
         b2.setTitle("Database Management Systems");
         
-        addBook(b1);
-        addBook(b2);
-        addBook(b3);
+        //addBook(b1);
+        //addBook(b2);
+        //addBook(b3);
         
         
     }
@@ -93,6 +93,38 @@ public class BookDataAccessImpl implements BookDataAccess{
         Session session = SessionHelper.getSession();
         int cat = category.ordinal();
         Query q = session.createQuery("from Book where bookCategory="+cat);
+        //q.setString(0,category);
+        List result = q.list();
+        if(result.size() > 0) 
+            return q.list();
+        else 
+            return null;
+    }
+    
+    public Book getBookById(String id) {
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = SessionHelper.getSession();
+            tx = session.beginTransaction();
+            Query q = session.createQuery("from Book where id=?");
+            q.setString(0,id);
+            List result = q.list();
+            if(result.size() > 0) 
+                return (Book)result.get(0);
+            else 
+                return null;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            tx.commit();
+            session.close();
+        }
+    }
+    public List<Book> availableBooks(){
+        Session session = SessionHelper.getSession();
+        Query q = session.createQuery("from Book where quantity>"+0);
         //q.setString(0,category);
         List result = q.list();
         if(result.size() > 0) 

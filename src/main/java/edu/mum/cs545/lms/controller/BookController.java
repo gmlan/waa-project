@@ -13,12 +13,16 @@ import edu.mum.cs545.lms.service.AuthorService;
 import edu.mum.cs545.lms.service.BookService;
 import java.util.Arrays;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -40,36 +44,27 @@ public class BookController {
         model.addAttribute("book", new Book());
         model.addAttribute("bookTypes", Arrays.asList(BookType.values()));
 	model.addAttribute("bookCategories", Arrays.asList(BookCategory.values()));
-       
+       System.out.println("All books collection is -- " + bookservice.getAll().size());
+       System.out.println("Available  books -- " + bookservice.availableBooks().size());
         
         return "books";
         
     }
     
     @RequestMapping(value = "/books", method = RequestMethod.POST)
-    public String addBooks(@ModelAttribute("book")Book book){
+    public String addBooks(@ModelAttribute("book") @Valid Book book, BindingResult result){
       // this part is problamatic. Book is always coming in as null
+        if(result.hasErrors())
+            return "books";
+        bookservice.addBook(book);     
         
-        bookservice.addBook(book);
-      
-        
-        return "redirect:/books";
+        return "redirect:/listbooks";
         
     }
     
     @RequestMapping(value = "/listbooks", method = RequestMethod.GET)
     public String getBookslist(Model model){
         System.out.println("ALl the books");
-        Book b = new Book();
-        model.addAttribute("book", b);
-        List<Book> bklist = bookservice.getAll();
-        for(Book b1:bklist)
-            System.out.println("Getting all " +  b1.getTitle());
-        
-        List<Book> bklistcat = bookservice.getBookByCategory(BookCategory.FICTION);
-         for(Book b1:bklistcat)
-            System.out.println("Getting all by cat " +  b1.getTitle());
-        
         return "listbooks";
         
     }
@@ -84,24 +79,33 @@ public class BookController {
         
     }
     
+    @RequestMapping(value = "/author/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable("id") String id, Model model) {
+        Author author = authorservice.getAuthorById(id);         
+        model.addAttribute("author", author);
+        return "authors";
+    }
+    
+    @RequestMapping(value = "/book/edit/{id}", method = RequestMethod.GET)
+    public String editBook(@PathVariable("id") String id, Model model) {
+        Book book = bookservice.getBookById(id);         
+        model.addAttribute("book", book);
+        return "books";
+    }
+    
     @RequestMapping(value = "/authors", method = RequestMethod.POST)
-    public String add(@ModelAttribute("author") Author author){
+    public String add(@ModelAttribute("author") @Valid Author author, BindingResult result){
+            if(result.hasErrors())
+                return "authors";
             authorservice.addAuthor(author);
             System.out.println("Author info --" + author.getEmail());
             System.out.println("Author info --" + author.getFirstName());
             System.out.println("Author info --" + author.getLastName());
-            return "redirect:/authors/";		
+            return "redirect:/listauthors/";		
     }
     
      @RequestMapping(value = "/publishers", method = RequestMethod.GET)
     public String getPublishers(Model model){
-//        System.out.println("ALl the books");
-//        Author a = new Author();
-//        a.setEmail("write2miki");
-//        a.setFirstName("Miki");
-//        a.setLastName("Teshome");
-//        authorservice.addAuthor(a);
-        
         Book b = new Book();
         model.addAttribute("book", b);
         
@@ -110,13 +114,6 @@ public class BookController {
     }
      @RequestMapping(value = "/listpublishers", method = RequestMethod.GET)
     public String getPublisherslist(Model model){
-//        System.out.println("ALl the books");
-//        Author a = new Author();
-//        a.setEmail("write2miki");
-//        a.setFirstName("Miki");
-//        a.setLastName("Teshome");
-//        authorservice.addAuthor(a);
-        
         Book b = new Book();
         model.addAttribute("book", b);
         
@@ -126,18 +123,17 @@ public class BookController {
     
      @RequestMapping(value = "/listauthors", method = RequestMethod.GET)
     public String getAuthorslist(Model model){
-//        System.out.println("ALl the books");
-//        Author a = new Author();
-//        a.setEmail("write2miki");
-//        a.setFirstName("Miki");
-//        a.setLastName("Teshome");
-//        authorservice.addAuthor(a);
+       return "listauthors";
         
-        //Book b = new Book();
-       // model.addAttribute("book", b);
-        
-        return "listauthors";
-        
+    }
+    @RequestMapping(value="/book/rest/booklist",method=RequestMethod.GET )
+    public @ResponseBody List<Book> getBookList(){
+       return bookservice.getAll();
+    }
+    
+    @RequestMapping(value="/author/rest/authorlist",method=RequestMethod.GET )
+    public @ResponseBody List<Author> getAuthorList(){
+       return authorservice.getAll();
     }
     
 }

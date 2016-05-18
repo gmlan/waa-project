@@ -23,6 +23,8 @@ public interface BookService {
     public void addBook(Book b);
     public List<Book> getAll();
     List<Book> getBookByCategory(BookCategory category); 
+    Book getBookById(String id);
+    public List<Book> availableBooks();
     
     
 }

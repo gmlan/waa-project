@@ -12,6 +12,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 
@@ -27,18 +30,18 @@ public class Author {
     private long id;
 
 
-    //@NotBlank(message = "First Name filed can not be Empty")
+    @NotBlank(message = "First Name filed can not be Empty")
     //@Field
     private String firstName;
 
     //@Field
-    //@NotBlank(message = "First Name filed can not be Empty")
+    @NotBlank(message = "First Name filed can not be Empty")
     private String lastName;
 
-    //@Email(message = "Email field not valid")
+    @Email(message = "Email field not valid")
     private String email;
 
-    //@Pattern(regexp="[0-9]+",message = "Only numbers allowed.")
+    @Pattern(regexp="[0-9]+",message = "Only numbers allowed.")
     //@Size(min=4,max=10)
     private String phone;
 

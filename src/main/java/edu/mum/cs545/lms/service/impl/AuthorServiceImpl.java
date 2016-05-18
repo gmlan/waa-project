@@ -28,6 +28,12 @@ public class AuthorServiceImpl implements AuthorService{
     public void addAuthor(Author a){
         authorDao.addAuthor(a);
     }
+    public List<Author> getAll(){
+        return authorDao.getAll();
+    }
+    public Author getAuthorById(String id){
+        return authorDao.getAuthorById(id);
+    }
     
 //    public void create(Author author) {
 //        authorDao.save(author);
