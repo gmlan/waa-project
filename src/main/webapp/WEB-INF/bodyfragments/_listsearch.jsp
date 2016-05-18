@@ -2,6 +2,9 @@
 <hr />
 <input type="hidden" value="${queryParam}" id="queryParam" />
 <input type="hidden" value="${categoryParam}" id="categoryParam" />
+<div id="loader" style="text-align:center">
+    <img src="static/images/loading-bar.gif">
+</div>
 <div class="result">
     <p id="nodata">No result found, please try again.</p>
     <table id="table" class="display" cellspacing="0" width="100%">
@@ -28,8 +31,12 @@
 <script>
     var table;
     $(function () {
+        $(document).ajaxStart(function(){ $("#loader").show(); })
+                    .ajaxStop(function() { $("#loader").hide(); });
+        $("div.result").hide ();
         $.get("search/rest/list?q=" + $("#queryParam").val() + "&c=" + $("#categoryParam").val())
                 .success(function (data) {
+                    $("div.result").show ();
                     if (data.length == 0) {
                         $("#table").hide();
                         $("#nodata").show();

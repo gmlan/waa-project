@@ -1,5 +1,8 @@
 <h1>List User</h1>
 <hr />
+<div id="loader" style="text-align:center">
+    <img src="static/images/loading-bar.gif">
+</div>
 <div class="result">
     <p id="nodata">No result found, please try again.</p>
     <table id="table" class="display" cellspacing="0" width="100%">
@@ -21,9 +24,13 @@
 
 <script>
     var table;
-    $(function () {
+    $(function () {        
+        $(document).ajaxStart(function(){ $("#loader").show(); })
+                    .ajaxStop(function() { $("#loader").hide(); });
+        $("div.result").hide ();
         $.get("admin/rest/list")
                 .success(function (data) {
+                    $("div.result").show();
                     if (data.length == 0) {
                         $("#table").hide();
                         $("#nodata").show();
