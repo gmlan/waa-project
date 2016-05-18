@@ -38,8 +38,8 @@ public class Publisher {
     private  String phone;
 
     //@JsonIgnore
-    @OneToMany(mappedBy="publisher", cascade=CascadeType.ALL)
-    private List<Book> books = new ArrayList<Book>();
+    //@OneToMany(mappedBy="publisher", cascade=CascadeType.ALL)
+    //private List<Book> books = new ArrayList<Book>();
 
     public long getId() {
             return this.id;
@@ -75,13 +75,13 @@ public class Publisher {
             this.name = name;
     }
 
-    public List<Book> getBooks() {
-            return books;
-    }
-
-    public void setBooks(List<Book> books) {
-            this.books = books;
-    }
+//    public List<Book> getBooks() {
+//            return books;
+//    }
+//
+//    public void setBooks(List<Book> books) {
+//            this.books = books;
+//    }
 
     @Override
     public String toString(){

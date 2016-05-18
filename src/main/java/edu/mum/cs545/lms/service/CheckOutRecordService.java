@@ -15,7 +15,7 @@ import java.util.List;
 public interface CheckOutRecordService {
     List<CheckOutRecord> getAll();
     CheckOutRecord findById(Long id);
-    void deleteCheckOutRecord(Long id);
+    void deleteCheckOutRecord(CheckOutRecord checkOutRecord);
     void createCheckOutRecord(CheckOutRecord checkOutRecord);
     void updateCheckOutRecord(CheckOutRecord checkOutRecord);
 }

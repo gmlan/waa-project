@@ -28,9 +28,16 @@ public class BookServiceImpl implements BookService{
         this.bookDao = bookDao;
     }
     
+    public List<Book> getAll(){
+        return bookDao.getAll();
+    }
      public void addBook(Book b){
         bookDao.addBook(b);
     }
+     public List<Book> getBookByCategory(BookCategory category) {
+         return bookDao.getBookByCategory(category) ;
+         
+     }
 //    public void create(Book book) {
 //        bookDao.save(book);
 //    }

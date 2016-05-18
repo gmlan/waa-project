@@ -43,8 +43,8 @@ public class Author {
     private String phone;
 
     //@JsonIgnore
-    @ManyToMany(mappedBy="authors", cascade=CascadeType.ALL)
-    private List<Book> books = new ArrayList<Book>();
+    //@ManyToMany(mappedBy="authors", cascade=CascadeType.ALL)
+    //private List<Book> books = new ArrayList<Book>();
 
 
     public long getId() {
