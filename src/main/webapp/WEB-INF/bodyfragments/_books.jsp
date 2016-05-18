@@ -5,7 +5,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+
 <title>Add Book</title>
+<script>
+$(document).ready(function() {
+    $('#dateRangePicker')
+        .datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '01/01/1990',
+            endDate: '01/01/2018'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#dateRangeForm').formValidation('revalidateField', 'date');
+        });
+
+    $('#dateRangeForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            date: {
+                validators: {
+                    notEmpty: {
+                        message: 'The date is required'
+                    },
+                    date: {
+                        format:'mm/dd/yyyy',
+                        min: '01/01/1990',
+                        max: '01/01/2018',
+                        message: 'The date is not a valid'
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
 </head>
 <body>
 	<div class="container">
@@ -102,10 +145,16 @@
 
 				<div class="col-md-4">
 					<div class="input-group">
-						<span class="input-group-addon" id="basic-addon1">Release
+						<!--span class="input-group-addon" id="basic-addon1">Release
+							Date</span -->
+						<!--form:input path="releaseDate" class="form-control"
+							placeholder="yyyy-MM-dd" / -->
+                                                <span class="input-group-addon" id="basic-addon1">Release
 							Date</span>
-						<form:input path="releaseDate" class="form-control"
-							placeholder="yyyy-MM-dd" />
+                                                <div class="input-group input-append date" id="dateRangePicker">
+                                                    <form:input path="releaseDate" class="form-control" name="date" />
+                                                    <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                                </div>
 					</div>
 				</div>
 				<div class="col-md-2">

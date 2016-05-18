@@ -52,7 +52,7 @@ public class Book {
     //@Field(index = Index.YES, analyze = Analyze.NO, store = Store.YES)
     //@DateBridge(resolution = Resolution.DAY)
     @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     @NotNull(message = "Release Date can not be blank")
     private Date releaseDate;
 
