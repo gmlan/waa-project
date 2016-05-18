@@ -6,6 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
+    <image class="logo" src="static/images/logo.png" />
     <a class="navbar-brand" href="${pageContext.request.contextPath}">Library Management System V0.1</a>
 </div>
 <!-- Top Menu Items -->
