@@ -9,6 +9,7 @@ import edu.mum.cs545.lms.dao.CheckOutRecordDataAccess;
 import edu.mum.cs545.lms.domain.CheckOutRecord;
 import edu.mum.cs545.lms.util.SessionHelper;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,10 +20,10 @@ import org.springframework.stereotype.Component;
  * @author Mike
  */
 @Component
-public class CheckOutRecordDataAccessImpl implements CheckOutRecordDataAccess{
+public class CheckOutRecordDataAccessImpl implements CheckOutRecordDataAccess {
 
     public List<CheckOutRecord> getAll() {
-        
+
         Session session = null;
         Transaction tx = null;
         try {
@@ -40,31 +41,55 @@ public class CheckOutRecordDataAccessImpl implements CheckOutRecordDataAccess{
     }
 
     public CheckOutRecord findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = SessionHelper.getSession();
+        Transaction trans = session.beginTransaction();
+        Query query = session.createQuery("from CheckOutRecord where id = :id");
+        query.setLong("id", id);
+        Object queryResult = query.uniqueResult();
+        CheckOutRecord checkout = (CheckOutRecord) queryResult;
+        trans.commit();
+        //session.getTransaction().commit();
+
+        return checkout;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void deleteCheckOutRecord(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteCheckOutRecord(CheckOutRecord checkOutRecord) {
+        Session session = SessionHelper.getSession();
+        Transaction trans = session.beginTransaction();
+        try {
+            session.delete(checkOutRecord);
+        } catch (RuntimeException re) {
+            throw re;
+        } finally {
+            trans.commit();
+            session.close();
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void createCheckOutRecord(CheckOutRecord checkOutRecord) {
         Session session = SessionHelper.getSession();
         Transaction trans = session.beginTransaction();
-        try{
+        try {
             session.save(checkOutRecord);
-        }catch(Exception e){
+        } catch (Exception e) {
             throw new RuntimeException(e);
-        }finally{
+        } finally {
             trans.commit();
-            session.close(); 
+            session.close();
         }
-        
-         
+
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void updateCheckOutRecord(CheckOutRecord checkOutRecord) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = SessionHelper.getSession();
+        Transaction trans = session.beginTransaction();
+        session.merge(checkOutRecord);
+        trans.commit();
+        session.close();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

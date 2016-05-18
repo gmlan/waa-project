@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 public interface CheckOutRecordDataAccess {
     List<CheckOutRecord> getAll();
     CheckOutRecord findById(Long id);
-    void deleteCheckOutRecord(Long id);
+    void deleteCheckOutRecord(CheckOutRecord checkOutRecord);
     void createCheckOutRecord(CheckOutRecord checkOutRecord);
     void updateCheckOutRecord(CheckOutRecord checkOutRecord);
 }

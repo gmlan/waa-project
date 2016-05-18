@@ -2,6 +2,7 @@ package edu.mum.cs545.lms.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
@@ -20,15 +21,15 @@ public class CheckOutRecord implements Serializable {
     @GeneratedValue
     private Long id;
     private String ISBN;
-    private String userId;
+    private String memberId;
     //@Temporal(TemporalType.DATE)
-    private LocalDate dueDate;
-    //@Temporal(TemporalType.DATE)
-    private LocalDate dateCheckout;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private User user;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Book book;
+    private String dueDate;
+   // @Temporal(TemporalType.DATE)
+    private String dateCheckout;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Member member;
+   // @ManyToOne(cascade = CascadeType.ALL)
+    //private transient Book book;
 
     public CheckOutRecord() {
     }
@@ -41,35 +42,43 @@ public class CheckOutRecord implements Serializable {
         this.id = id;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
-    public Book getBook() {
-        return book;
-    }
+//    public Member getMember() {
+//        return member;
+//    }
+//
+//    public void setMember(Member member) {
+//        this.member = member;
+//    }
+   
+//    public Book getBook() {
+//        return book;
+//    }
+//
+//    public void setBook(Book book) {
+//        this.book = book;
+//    }
 
-    public void setBook(Book book) {
-        this.book = book;
-    }
-
-    public LocalDate getDueDate() {
+    public String getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(String dueDate) {
         this.dueDate = dueDate;
     }
 
-    public LocalDate getDateCheckout() {
+    public String getDateCheckout() {
         return dateCheckout;
     }
 
-    public void setDateCheckout(LocalDate dateCheckout) {
+    public void setDateCheckout(String dateCheckout) {
         this.dateCheckout = dateCheckout;
     }
 
@@ -81,12 +90,5 @@ public class CheckOutRecord implements Serializable {
         ISBN = iSBN;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
+   
 }
