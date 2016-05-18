@@ -38,6 +38,9 @@ public class BookServiceImpl implements BookService{
          return bookDao.getBookByCategory(category) ;
          
      }
+     public Book getBookById(String id){
+         return bookDao.getBookById(id);
+     }
 //    public void create(Book book) {
 //        bookDao.save(book);
 //    }

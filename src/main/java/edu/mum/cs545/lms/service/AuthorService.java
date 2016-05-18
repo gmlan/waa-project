@@ -21,5 +21,7 @@ public interface AuthorService {
 //    List<Author> findByLastName(String lname);
 //    List<Author> findById(long id);
     public void addAuthor(Author a);
+    List<Author> getAll(); 
+    Author getAuthorById(String id);
     
 }

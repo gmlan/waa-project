@@ -19,6 +19,8 @@ public interface AuthorDataAccess/* extends JpaRepository<Author, Long>*/{
 //    List<Author> findByLastName(String lname);
 //    List<Author> findById(long id);
     void addAuthor(Author author);
+    List<Author> getAll(); 
+    Author getAuthorById(String id);
     
         
 }
